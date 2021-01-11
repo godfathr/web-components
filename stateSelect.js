@@ -117,23 +117,14 @@ class StateList extends HTMLElement {
 
         // define variables
         const showValues = true;
-        const searchBox = this.shadowRoot.querySelector("#stateSearch");
+        let searchBox = this.shadowRoot.querySelector("#stateSearch");
         console.log(searchBox);
         let values = this.shadowRoot.querySelector("#stateList");
         console.log(values);
-        const optionValues = this.shadowRoot.querySelectorAll(".optionItem");
+        let optionValues = this.shadowRoot.querySelectorAll(".optionItem");
         console.log(optionValues.length);
 
-        for (var i = 0; i < optionValues.length; i++) {
-            //console.log(optionValues[i]);
-            let selectedState = optionValues[i].innerText;
-            optionValues[i].addEventListener('click', () => updateSelection(selectedState));
-        }
-
-        /*let selectOptions = this.shadowRoot.getElementById('stateSelectList');
-        for (var i = 0; i < selectOptions; i++) {
-            console.log(option.value);
-        }
+        /*
         let defaultSelectedOption = selectOptions.options[selectOptions.selectedIndex] =
             this.getAttribute('default');
         console.log(defaultSelectedOption);*/
@@ -145,12 +136,26 @@ class StateList extends HTMLElement {
         this.innerHTML = `${this.getAttribute('default')}`;
     }
 
-    toggleList(values) {
+    updateSelection(selectedState) {
+        console.log(selectedState);
+        this.searchBox = this.shadowRoot.querySelector("#stateSearch");
+        console.log("SearchBOx");
+        console.log(this.shadowRoot.querySelector("#stateSearch"));
+        this.searchBox.value = selectedState;
+
+        // collapse the option list
+        this.toggleList();
+    }
+
+    toggleList() {
+        // flip the switch on the showValues boolean
         this.showValues = !this.showValues;
         console.log(this.showValues);
 
+        // get the element that contains the list of options
         const list = this.shadowRoot.querySelector("#stateList");
 
+        // apply css styles to display or hide the list
         if (this.showValues) {
             list.style.display = "block";
         } else {
@@ -158,12 +163,17 @@ class StateList extends HTMLElement {
         }
     }
 
-    updateSelection() {
-        console.log("Selection was changed.");
-    }
-
     connectedCallback() {
-        this.shadowRoot.querySelector("#stateSearch").addEventListener('click', () => this.toggleList(values));
+        this.shadowRoot.querySelector("#stateSearch").addEventListener('click', () => this.toggleList());
+        let optionValues = this.shadowRoot.querySelectorAll(".optionItem");
+
+        for (var i = 0; i < optionValues.length; i++) {
+            let selectedState = optionValues[i].innerText;
+            optionValues[i].addEventListener('click', () => this.updateSelection(selectedState));
+        }
+
+        console.log("Connected callback option values ");
+        console.log(optionValues);
         //this.shadowRoot.querySelector('#stateSelectList').addEventListener('click', () => this.updateSelection());
     }
 

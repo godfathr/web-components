@@ -11,41 +11,40 @@
     </head>
 
     <body>
-        <h1>Select a State</h1>
         <state-select default="Florida"></state-select>
 
         <script>
-            const searchBox = document.getElementById("stateSearch");
-            const values = document.getElementById("stateList");
-            const optionValues = document.querySelectorAll("li");
-            const showValues = true;
-            //searchBox.addEventListener('click', () => toggleList());
+            // const searchBox = document.getElementById("stateSearch");
+            // const values = document.getElementById("stateList");
+            // const optionValues = document.querySelectorAll("li");
+            // const showValues = true;
+            // searchBox.addEventListener('click', () => toggleList());
             // values.children.addEventListener('click', () => updateSelection());
             // optionValues.forEach(element => addEventListener('click', () => updateSelection()));
-            console.log("Hi" + optionValues.length);
+            // console.log("Hi" + optionValues.length);
 
-            /*for (var i = 0; i < optionValues.length; i++) {
-                let selectedState = optionValues[i].innerText;
-                optionValues[i].addEventListener('click', () => updateSelection(selectedState));
-            }*/
+            // for (var i = 0; i < optionValues.length; i++) {
+            //     let selectedState = optionValues[i].innerText;
+            //     optionValues[i].addEventListener('click', () => updateSelection(selectedState));
+            // }
 
-            function toggleList() {
-                this.showValues = !this.showValues;
+            // function toggleList() {
+            //     this.showValues = !this.showValues;
 
-                if (this.showValues) {
-                    values.style.display = "block";
-                } else {
-                    values.style.display = "none";
-                }
-            }
+            //     if (this.showValues) {
+            //         values.style.display = "block";
+            //     } else {
+            //         values.style.display = "none";
+            //     }
+            // }
 
-            function updateSelection(selectedState) {
-                console.log(selectedState);
-                searchBox.value = selectedState;
+            // function updateSelection(selectedState) {
+            //     console.log(selectedState);
+            //     searchBox.value = selectedState;
 
-                // collapse the option list
-                toggleList();
-            }
+            //     // collapse the option list
+            //     toggleList();
+            // }
         </script>
 
         <script src="stateSelect.js"></script>
