@@ -137,10 +137,7 @@ class StateList extends HTMLElement {
     }
 
     updateSelection(selectedState) {
-        console.log(selectedState);
         this.searchBox = this.shadowRoot.querySelector("#stateSearch");
-        console.log("SearchBOx");
-        console.log(this.shadowRoot.querySelector("#stateSearch"));
         this.searchBox.value = selectedState;
 
         // collapse the option list
@@ -150,7 +147,6 @@ class StateList extends HTMLElement {
     toggleList() {
         // flip the switch on the showValues boolean
         this.showValues = !this.showValues;
-        console.log(this.showValues);
 
         // get the element that contains the list of options
         const list = this.shadowRoot.querySelector("#stateList");
@@ -171,14 +167,16 @@ class StateList extends HTMLElement {
             let selectedState = optionValues[i].innerText;
             optionValues[i].addEventListener('click', () => this.updateSelection(selectedState));
         }
-
-        console.log("Connected callback option values ");
-        console.log(optionValues);
-        //this.shadowRoot.querySelector('#stateSelectList').addEventListener('click', () => this.updateSelection());
     }
 
     disconnectedCallback() {
-        //this.shadowRoot.querySelector('#stateSelectList').removeEventListener();
+        this.shadowRoot.querySelector("#stateSearch").removeEventListener();
+
+        let optionValues = this.shadowRoot.querySelectorAll(".optionItem");
+        for (var i = 0; i < optionValues.length; i++) {
+            let selectedState = optionValues[i].innerText;
+            optionValues[i].removeEventListener();
+        }
     }
 }
 
