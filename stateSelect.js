@@ -110,12 +110,26 @@ class StateList extends HTMLElement {
         // Always call super first in constructor
         super();
 
-        // this.innerHTML = ``;
+        this.innerHTML = `<style>h1 {font-family:Verdana}</style>`;
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
-        let searchBox = this.shadowRoot.querySelector("#stateSearch");
+
+        // define variables
+        const showValues = true;
+        const searchBox = this.shadowRoot.querySelector("#stateSearch");
         console.log(searchBox);
+        let values = this.shadowRoot.querySelector("#stateList");
+        console.log(values);
+        const optionValues = this.shadowRoot.querySelectorAll(".optionItem");
+        console.log(optionValues.length);
+
+        for (var i = 0; i < optionValues.length; i++) {
+            //console.log(optionValues[i]);
+            let selectedState = optionValues[i].innerText;
+            optionValues[i].addEventListener('click', () => updateSelection(selectedState));
+        }
+
         /*let selectOptions = this.shadowRoot.getElementById('stateSelectList');
         for (var i = 0; i < selectOptions; i++) {
             console.log(option.value);
@@ -131,11 +145,25 @@ class StateList extends HTMLElement {
         this.innerHTML = `${this.getAttribute('default')}`;
     }
 
-    updateSelction() {
+    toggleList(values) {
+        this.showValues = !this.showValues;
+        console.log(this.showValues);
+
+        const list = this.shadowRoot.querySelector("#stateList");
+
+        if (this.showValues) {
+            list.style.display = "block";
+        } else {
+            list.style.display = "none";
+        }
+    }
+
+    updateSelection() {
         console.log("Selection was changed.");
     }
 
     connectedCallback() {
+        this.shadowRoot.querySelector("#stateSearch").addEventListener('click', () => this.toggleList(values));
         //this.shadowRoot.querySelector('#stateSelectList').addEventListener('click', () => this.updateSelection());
     }
 

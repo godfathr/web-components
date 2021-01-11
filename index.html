@@ -19,15 +19,15 @@
             const values = document.getElementById("stateList");
             const optionValues = document.querySelectorAll("li");
             const showValues = true;
-            searchBox.addEventListener('click', () => toggleList());
+            //searchBox.addEventListener('click', () => toggleList());
             // values.children.addEventListener('click', () => updateSelection());
             // optionValues.forEach(element => addEventListener('click', () => updateSelection()));
             console.log("Hi" + optionValues.length);
 
-            for (var i = 0; i < optionValues.length; i++) {
+            /*for (var i = 0; i < optionValues.length; i++) {
                 let selectedState = optionValues[i].innerText;
                 optionValues[i].addEventListener('click', () => updateSelection(selectedState));
-            }
+            }*/
 
             function toggleList() {
                 this.showValues = !this.showValues;
