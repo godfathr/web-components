@@ -118,19 +118,8 @@ class StateList extends HTMLElement {
         // define variables
         const showValues = true;
         let searchBox = this.shadowRoot.querySelector("#stateSearch");
-        console.log(searchBox);
         let values = this.shadowRoot.querySelector("#stateList");
-        console.log(values);
         let optionValues = this.shadowRoot.querySelectorAll(".optionItem");
-        console.log(optionValues.length);
-
-        /*
-        let defaultSelectedOption = selectOptions.options[selectOptions.selectedIndex] =
-            this.getAttribute('default');
-        console.log(defaultSelectedOption);*/
-
-        // this.shadowRoot.querySelector('stateSelectList').options[]
-        //     this.getAttribute('default');
 
         // Element functionality written in here
         this.innerHTML = `${this.getAttribute('default')}`;
