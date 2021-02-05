@@ -23,6 +23,7 @@ li {
 
 #stateList {
     display: none;
+    height: 300px;
 }
 
 .stateListOptions {
@@ -34,6 +35,9 @@ li {
     width: calc(100% + 1rem);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    transition: all .5s ease-in-out;
+    height: 0;
 }
 
 .optionList {
@@ -54,3 +58,17 @@ li {
     padding: 0 1.2rem;
     color: white;
 }
+
+/* .slideDown {
+    background: #fff;
+    overflow: hidden;
+    color: #000;
+    line-height: 50px;
+
+    transition: all .5s ease-in-out;
+    height: 0;
+} */
+
+/* .slideDownOpen {
+    height: 300px;
+} */

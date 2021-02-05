@@ -81,12 +81,12 @@ class StateList extends HTMLElement {
 
         // Set the default selected value
         //this.shadowRoot.querySelector("#stateSearch").value = this.getAttribute('default');
-        this.shadowRoot.querySelector("#stateSearch").innerHTML = `<p>` + this.getAttribute('default'); + `</p>`;
+        this.shadowRoot.querySelector("#stateSearch").innerHTML = `<p>` + this.getAttribute('default') + `</p>`;
     }
 
     updateSelection(selectedState) {
         this.searchBox = this.shadowRoot.querySelector("#stateSearch");
-        this.searchBox.value = selectedState;
+        this.searchBox.innerHTML = `<p>` + selectedState + `</p>`;
 
         // collapse the option list
         this.toggleList();
@@ -102,6 +102,7 @@ class StateList extends HTMLElement {
         // apply css styles to display or hide the list
         if (this.showValues) {
             list.style.display = "block";
+            //list.classList.add("slideDownOpen");
         } else {
             list.style.display = "none";
         }
@@ -114,6 +115,21 @@ class StateList extends HTMLElement {
         for (var i = 0; i < optionValues.length; i++) {
             let selectedState = optionValues[i].innerText;
             optionValues[i].addEventListener('click', () => this.updateSelection(selectedState));
+        }
+
+        if (this.getAttribute("list-item-color")) {
+            let optionItems = this.shadowRoot.querySelectorAll('.optionItem');
+            for (var i = 0; i < optionItems.length; i++) {
+                optionItems[i].style.color = this.getAttribute("list-item-color");
+            }
+        }
+        if (this.getAttribute("list-item-background")) {
+            let optionItems = this.shadowRoot.querySelector('#stateList');
+            optionItems[i].style.background = this.getAttribute("list-item-background");
+
+            // for (var i = 0; i < optionItems.length; i++) {
+            //     optionItems[i].style.background = this.getAttribute("list-item-background");
+            // }
         }
     }
 
