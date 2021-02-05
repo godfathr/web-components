@@ -1,0 +1,74 @@
+*,
+p,
+li {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small
+}
+
+#stateSearch {
+    padding: 0 0.38em;
+    border: 1px solid rgba(200, 200, 200, 0.2);
+    width: 305px;
+}
+
+/* #stateSearch:before {
+    background-image:
+} */
+
+.optionContainer {
+    width: 300px;
+    max-width: 300px;
+    min-width: 150px;
+}
+
+#stateList {
+    display: none;
+    height: 300px;
+}
+
+.stateListOptions {
+    border: 1px solid rgba(200, 200, 200, 0.2);
+    margin-top: 0;
+    padding: 0;
+    background-color: rgba(240, 240, 240, 0.5);
+    max-height: 300px;
+    width: calc(100% + 1rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    transition: all .5s ease-in-out;
+    height: 0;
+}
+
+.optionList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.optionList li {
+    line-height: 1.8rem;
+    width: 100%;
+    padding: 0 1.3rem;
+}
+
+.optionList li:hover {
+    cursor: pointer;
+    background-color: black;
+    padding: 0 1.2rem;
+    color: white;
+}
+
+/* .slideDown {
+    background: #fff;
+    overflow: hidden;
+    color: #000;
+    line-height: 50px;
+
+    transition: all .5s ease-in-out;
+    height: 0;
+} */
+
+/* .slideDownOpen {
+    height: 300px;
+} */
